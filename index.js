@@ -19,19 +19,19 @@ app.engine("handlebars", exphbs());
 
 app.set("view engine", "handlebars");
 
-// app.get("/", function(req, res) {
-//   res.render("basicinfo");
-// });
+app.get("/", function(req, res) {
+  res.render("basicinfo");
+});
 
 app.get("/basicinfo", async (req, res) => {
   const info = await Info.all();
   res.render("basicinfo", { info });
 });
 
-// app.get("/lists/:id", async (req, res) => {
-//   const todos = await List.todos(req.params.id);
-//   res.render("todolist", { todos });
-// });
+app.get("/lists/:id", async (req, res) => {
+  const info = await Info.todos(req.params.id);
+  res.render("todolist", { todos });
+});
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`server running on ${process.env.PORT || PORT}`);
