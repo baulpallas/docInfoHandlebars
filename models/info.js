@@ -4,11 +4,11 @@ var Info = {
   all: async () => {
     const info = await orm.selectAll("basicinfo");
     return info;
+  },
+  getById: async infoId => {
+    const info = await orm.selectOneById("basicinfo", infoId);
+    return info;
   }
-  // getById: async listId => {
-  //   const list = await orm.selectOneById("basicinfo", listId);
-  //   return list;
-  // },
   // create: async list => {
   //   const result = await orm.insertInto("basicinfo", list);
   //   return result;
