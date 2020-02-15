@@ -16,7 +16,7 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Title</span>
+                <span class="mdl-layout-title">Doc Salesforces App</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
@@ -53,8 +53,8 @@
                             <tbody>
                                 {{#each info}}
                                 <tr>
-                                    <td>{{this.name}}</td>
-                                    <td>{{this.zipcode}}</td>
+                                    <td value={{this.userid}}>{{this.name}}</td>
+                                    <td value={{this.userid}}>{{this.zipcode}}</td>
                                 </tr>
                                 {{/each}}
                             </tbody>
@@ -74,10 +74,13 @@
                                 <span class="mdl-textfield__error">Input is not a number!</span>
                             </div>
                             <!-- Mini FAB button -->
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+                            <button type="submit" id="submit-button"
+                                class="mdl-button mdl-js-button mdl-button--raised">
                                 Submit
                             </button>
-                            <button type="delete" class="mdl-button mdl-js-button mdl-button--raised">
+                            <br>
+                            <button type="delete" id="delete-button"
+                                class="mdl-button mdl-js-button mdl-button--raised">
                                 Delete
                             </button>
                         </form>
@@ -90,8 +93,12 @@
         </main>
     </div>
     <script>
+
+
         const inputForm = document.getElementById("inputForm");
-        inputForm.addEventListener("submit", evt => {
+        const submitButton = document.getElementById("submit-button");
+        submitButton.addEventListener("click", evt => {
+            console.log("hello")
             evt.preventDefault();
             const formInputs = inputForm.querySelectorAll("input");
             console.log(formInputs)
@@ -116,8 +123,12 @@
                         console.log("error trying to create doctor :: ", err)
                     );
                 window.location.reload()
+
             }
         });
+
+        const selectedDoc = document.querySelectorAll(".is-selected");
+        console.log(selectedDoc);
     </script>
 </body>
 
