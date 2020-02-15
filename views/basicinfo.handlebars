@@ -45,7 +45,10 @@
                         <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                             <thead>
                                 <tr>
+
                                     <th class="mdl-data-table__cell--non-numeric">Name</th>
+
+                                    <th>Name</th>
                                     <th>Zipcode</th>
 
                                 </tr>
@@ -53,6 +56,7 @@
                             <tbody>
                                 {{#each info}}
                                 <tr>
+                                    <td value={{this.userid}}>{{this.userid}}</td>
                                     <td value={{this.userid}}>{{this.name}}</td>
                                     <td value={{this.userid}}>{{this.zipcode}}</td>
                                 </tr>
@@ -123,12 +127,28 @@
                         console.log("error trying to create doctor :: ", err)
                     );
                 window.location.reload()
-
             }
         });
 
-        const selectedDoc = document.querySelectorAll(".is-selected");
-        console.log(selectedDoc);
+        const selectedDoc = document.getElementsByClassName("is-selected");
+        const deleteButton = document.getElementById("delete-button");
+
+        deleteButton.addEventListener("click", evt => {
+            evt.preventDefault();
+
+            let docID = selectedDoc[0].firstElementChild.nextSibling.textContent;
+            fetch(`/basicinfo/${docID}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data =>
+                    console.log("successfully deleted doctor :: ", data)
+                )
+                .catch(err =>
+                    console.log("error trying to delete doctor :: ", err)
+                );
+            window.location.reload()
+        })
     </script>
 </body>
 
