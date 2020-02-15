@@ -6,15 +6,16 @@ router.get("/", async (req, res) => {
   res.json({ info: info });
 });
 
-// router.post("/", async (req, res) => {
-//   const result = await Info.create(req.body);
-//   res.json(result);
-// });
+router.post("/basicinfo", async (req, res) => {
+  const result = await Info.create(req.body);
+  res.json(result);
+});
 
-// router.get("/:id", async (req, res) => {
-//   const todo = await Info.getById(req.params.id);
-//   res.json(todo);
-// });
+router.get("/basicinfo/:userid", async (req, res) => {
+  console.log(req.params.userid);
+  const info = await Info.getById(req.params.userid);
+  res.json(info);
+});
 
 // router.put("/:id", async (req, res) => {
 //   const result = await Info.update(req.params.id, req.body);

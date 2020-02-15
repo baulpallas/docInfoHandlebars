@@ -5,14 +5,15 @@ var Info = {
     const info = await orm.selectAll("basicinfo");
     return info;
   },
-  getById: async infoId => {
-    const info = await orm.selectOneById("basicinfo", infoId);
+  getById: async userid => {
+    const info = await orm.selectOneById("basicinfo", userid);
     return info;
+  },
+  create: async doc => {
+    const result = await orm.insertInto("basicinfo", doc);
+    console.log(result);
+    return result;
   }
-  // create: async list => {
-  //   const result = await orm.insertInto("basicinfo", list);
-  //   return result;
-  // },
   // update: async (listId, list) => {
   //   const result = await orm.updateOneById("basicinfo", listId, list);
   //   return result;
