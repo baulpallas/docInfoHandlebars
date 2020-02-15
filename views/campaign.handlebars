@@ -48,23 +48,18 @@
 
                                     <th class="mdl-data-table__cell--non-numeric">ID</th>
 
-                                    <th>Name</th>
-                                    <th>Zipcode</th>
-
+                                    <th>Monthly Spend</th>
+                                    <th>Is Campaign Running?</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#each info}}
                                 <tr>
-                                    <td value={{this.userid}}>{{this.userid}}</td>
-                                    <td value={{this.userid}}>{{this.name}}</td>
-                                    <td value={{this.userid}}>{{this.zipcode}}</td>
-                                </tr>
-                                {{/each}}
-                            </tbody>
-                        </table>
-
-                        <br><br>
+                                    <td>{{this.campaignid}}</td>
+                                    <td>{{this.monthlyspend}}</td>
+                                    <td>{{this.campaignrunning}}</td>
+                                </tr> {{/each}} </tbody>
+                        </table> <br><br>
 
                         <form action="#" id="inputForm">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -87,8 +82,7 @@
                                 class="mdl-button mdl-js-button mdl-button--raised">
                                 Delete
                             </button>
-                            <button type=" campaign-info" id="campaign-button"
-                                class="mdl-button mdl-js-button mdl-button--raised">
+                            <button id="campaign-button" class="mdl-button mdl-js-button mdl-button--raised">
                                 Update Campaign Info
                             </button>
                         </form>
@@ -155,13 +149,8 @@
             window.location.reload()
         })
 
-        campaignButton.addEventListener("click", evt => {
-            console.log("hello")
-            evt.preventDefault();
-            let docID = selectedDoc[0].firstElementChild.nextSibling.textContent;
-            console.log(docID)
-            window.location.href = `campaign/${docID}`
-        })
+
+
     </script>
 </body>
 

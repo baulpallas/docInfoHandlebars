@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const Info = require("./models/info");
+const Campaign = require("./models/campaign");
 
 var app = express();
 
@@ -42,6 +43,17 @@ app.post("/basicinfo", async (req, res) => {
 app.delete("/basicinfo/:userid", async (req, res) => {
   const info = await Info.delete(req.params.userid);
   res.render("basicinfo", { info });
+});
+
+app.get("/campaign/:userid", async (req, res) => {
+  const campaign = await Campaign.getById(req.params.userid);
+  res.render("campaign", { campaign });
+});
+
+app.post("/campaign/:userid", async (req, res) => {
+  console.log(req.params);
+  const campaign = await Campaign.create(req.params.userid);
+  res.render("campaign", { campaign: campaign });
 });
 
 app.listen(process.env.PORT || PORT, () => {
