@@ -11,7 +11,9 @@
     "morgan": "^1.9.1",
     "mdl-handlebars": "^0.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
