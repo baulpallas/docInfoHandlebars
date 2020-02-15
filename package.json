@@ -1,0 +1,28 @@
+{
+  "name": "docinfohandlebars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql2": "^2.1.0",
+    "morgan": "^1.9.1",
+    "mdl-handlebars": "^0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baulpallas/docInfoHandlebars.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baulpallas/docInfoHandlebars/issues"
+  },
+  "homepage": "https://github.com/baulpallas/docInfoHandlebars#readme"
+}
