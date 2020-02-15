@@ -13,23 +13,16 @@ var Info = {
     const result = await orm.insertInto("basicinfo", doc);
     console.log(result);
     return result;
+  },
+  update: async (listId, list) => {
+    const result = await orm.updateOneById("basicinfo", listId, list);
+    return result;
+  },
+
+  delete: async userId => {
+    const result = await orm.deleteOneById("basicinfo", userId);
+    return result;
   }
-  // update: async (listId, list) => {
-  //   const result = await orm.updateOneById("basicinfo", listId, list);
-  //   return result;
-  // },
-  // delete: async listId => {
-  //   const result = await orm.deleteOneById("basicinfo", listId);
-  //   return result;
-  // },
-  // todos: async listId => {
-  //   const result = await orm.selectAllWhere("todos", "list", listId);
-  //   return result;
-  // },
-  // addTodo: async (listId, todo) => {
-  //   const result = await orm.insertInto("todos", { ...todo, list: listId });
-  //   return result;
-  // }
 };
 
 module.exports = Info;
