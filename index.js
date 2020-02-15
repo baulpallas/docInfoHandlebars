@@ -28,9 +28,15 @@ app.get("/basicinfo", async (req, res) => {
   res.render("basicinfo", { info });
 });
 
-app.get("/lists/:id", async (req, res) => {
-  const info = await Info.todos(req.params.id);
-  res.render("todolist", { todos });
+app.get("/basicinfo/:userid", async (req, res) => {
+  const info = await Info.getById(req.params.userid);
+  res.render("basicinfo", { info });
+});
+
+app.post("/basicinfo", async (req, res) => {
+  console.log(req.params);
+  const info = await Info.create(req.body);
+  res.render("basicinfo", { info: info });
 });
 
 app.listen(process.env.PORT || PORT, () => {

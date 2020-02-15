@@ -55,11 +55,29 @@
                                 <tr>
                                     <td>{{this.name}}</td>
                                     <td>{{this.zipcode}}</td>
-
                                 </tr>
                                 {{/each}}
                             </tbody>
                         </table>
+
+                        <br><br>
+
+                        <form action="#" id="inputForm">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input input" type="text" id="sample3">
+                                <label class="mdl-textfield__label" for="name">Name</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                                    id="sample4">
+                                <label class="mdl-textfield__label" for="zipcode">Zipcode</label>
+                                <span class="mdl-textfield__error">Input is not a number!</span>
+                            </div>
+                            <!-- Mini FAB button -->
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </form>
 
                     </div>
                     <div class="mdl-cell mdl-cell--4-col"></div>
@@ -68,6 +86,33 @@
             </div>
         </main>
     </div>
+    <script>
+        const inputForm = document.getElementById("inputForm");
+        inputForm.addEventListener("submit", evt => {
+            evt.preventDefault();
+            const formInputs = inputForm.querySelectorAll("input");
+            const newDoc = {};
+            for (let input of formInputs) {
+                newDoc[input.name] = input.value;
+                newDoc[input.zipcode] = input
+            }
+            console.log(newDoc)
+            fetch("/basicinfo", {
+                method: "POST",
+                body: JSON.stringify(newDoc),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => res.json())
+                .then(data =>
+                    console.log("successfully created a new reservation :: ", data)
+                )
+                .catch(err =>
+                    console.log("error trying to create reservation :: ", err)
+                );
+        });
+    </script>
 </body>
 
 </html>
